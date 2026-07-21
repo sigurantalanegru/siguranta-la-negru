@@ -459,7 +459,7 @@ h3 { font-size: 1.23rem; }
   .carousel-dot { width: 11px; height: 11px; }
   .carousel-dot.is-active { width: 28px; }
 
-  .home-content-grid .comic-tip { padding: 24px 0 52px; }
+  .home-content-grid .comic-tip { padding: 24px 0 76px; }
   .sln-tip.comic-tip > img { width: 100%; border-radius: 9px; box-shadow: 5px 6px 0 var(--blue); }
 
   #valori { padding: 58px 0 68px; }
