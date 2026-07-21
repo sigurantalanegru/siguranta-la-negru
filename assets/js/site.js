@@ -101,6 +101,19 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
 const carousel = document.querySelector("[data-carousel]");
 if (carousel) {
   const track = carousel.querySelector(".missions-track");
+  const mobileCarousel = window.matchMedia("(max-width: 720px)").matches;
+  if (mobileCarousel) {
+    const cards = [...carousel.querySelectorAll(".mission-card")];
+    track.replaceChildren(...cards.map((card, index) => {
+      const slide = document.createElement("div");
+      slide.className = "mission-slide mobile-mission-slide";
+      slide.setAttribute("aria-label", `Misiunea ${index + 1} din ${cards.length}`);
+      slide.append(card);
+      return slide;
+    }));
+    const dotsContainer = carousel.querySelector(".carousel-dots");
+    dotsContainer.innerHTML = cards.map((_, index) => `<button type="button" class="carousel-dot${index === 0 ? " is-active" : ""}" data-carousel-dot="${index}" aria-label="Misiunea ${index + 1}" aria-selected="${index === 0}"></button>`).join("");
+  }
   const slides = [...carousel.querySelectorAll(".mission-slide")];
   const dots = [...carousel.querySelectorAll("[data-carousel-dot]")];
   let carouselIndex = 0;
